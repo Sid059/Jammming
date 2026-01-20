@@ -1,0 +1,25 @@
+@import url('./reset.css');
+
+@font-face {
+  font-family: SpotifyMixUI-Bold;
+  src: url(../public/fonts/SpotifyMixUI-Bold.ttf);
+}
+
+@font-face {
+  font-family: SpotifyMixUI-Regular;
+  src: url(../public/fonts/SpotifyMixUI-Regular.ttf);
+}
+
+@font-face {
+  font-family: SpotifyMixUITitleVariable;
+  src: url(../public/fonts/SpotifyMixUITitleVariable.ttf);
+}
+
+
+html {
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    line-height: 1.6;
+}
