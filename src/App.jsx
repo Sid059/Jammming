@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css'
 import { mockTracks } from './mockData.js';
+import Tracklist from './components/container/Tracklist.jsx';
 
 export default function App(){
 
@@ -30,12 +31,22 @@ export default function App(){
         <div className="app-layout">
           <div className="search-section">
             <h2>Search Section</h2>
-            <p>This is where SearchBar and SearchResults will go</p>
+            <Tracklist
+              tracks={searchResults}
+              onAdd={addTrack}
+              // These are search results, so show + buttons
+              isRemoval={false}
+              />
           </div>
 
           <div className="playlist-section">
             <h2>Playlist Section</h2>
-            <p>This is where Playlist will go</p>
+            <Tracklist
+              tracks={playlistTracks}
+              onRemove={removeTrack}
+              // These are playlist tracks, so show - buttons
+              isRemoval={true}
+              />
           </div>
         </div>
       </main>

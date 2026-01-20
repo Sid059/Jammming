@@ -1,0 +1,28 @@
+/* Tracklist Container Styles */
+.tracklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between tracks */
+  max-height: 500px; /* Limit height for scrolling */
+  overflow-y: auto; /* Add scrollbar if needed */
+  padding-right: 5px; /* Space for scrollbar */
+}
+
+/* Custom scrollbar styling */
+.tracklist::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tracklist::-webkit-scrollbar-track {
+  background: #181818;
+  border-radius: 4px;
+}
+
+.tracklist::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+}
+
+.tracklist::-webkit-scrollbar-thumb:hover {
+  background: #505050;
+}
