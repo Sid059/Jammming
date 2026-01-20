@@ -1,6 +1,5 @@
 .App{
     font-family: 'SpotifyMixUI-Regular', Arial, sans-serif;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     min-height: 100vh;
@@ -38,4 +37,34 @@
   grid-template-columns: 1fr;
   gap: 30px;
   padding: 20px;
+}
+
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.search-section,
+.playlist-section {
+  background-color: #000000;
+  padding: 30px;
+  border-radius: 10px;
+  border: 1px solid #282828;
+  min-height: 400px;
+}
+
+.search-section h2,
+.playlist-section h2 {
+  font-family: 'SpotifyMixUI-Bold', sans-serif;
+  font-size: 1.8rem;
+  color: #1DB954;
+  margin-bottom: 15px;
+}
+
+.search-section p,
+.playlist-section p {
+  color: #b3b3b3;
+  font-size: 1rem;
 }
