@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css'
 import { mockTracks } from './mockData.js';
+import SearchBar from './components/container/SearchBar.jsx';
 import Tracklist from './components/container/Tracklist.jsx';
 
 export default function App(){
@@ -8,6 +9,7 @@ export default function App(){
   const [searchResults, setSearchResults] = useState(mockTracks);
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
+   const [isSearching, setIsSearching] = useState(false);
 
   //========== add track to playlist ==========
   function addTrack(trackToAdd) {
@@ -38,6 +40,29 @@ export default function App(){
   }
 
 
+   // ============ search function ============
+  function handleSearch(searchTerm) {
+    console.log('Searching for:', searchTerm);
+    
+    // Show loading state
+    setIsSearching(true);
+    
+    // Simulate API delay
+    setTimeout(() => {
+      // Filter mock data based on search
+      const filteredTracks = mockTracks.filter(track => 
+        track.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        track.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        track.album.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      
+      setSearchResults(filteredTracks);
+      setIsSearching(false);
+      
+      console.log(`Found ${filteredTracks.length} tracks`);
+    }, 800); // Longer delay to see loading animation
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -46,22 +71,38 @@ export default function App(){
       </header>
       
       <main className="main-container">
+
+         {/* Search Bar with loading state */}
+        <div className="search-bar-container">
+          <SearchBar 
+            onSearch={handleSearch}
+            isLoading={isSearching}
+          />
+        </div>
+
         {/* Stats Display - Shows track counts */}
         <div className="stats-display">
           <div className="stat-item">
             <span className="stat-label">Search Results:</span>
-            <span className="stat-value">{searchResults.length} tracks</span>
+            <span className="stat-value">
+              {searchResults.length} {searchResults.length === 1 ? 'track' : 'tracks'}
+            </span>
           </div>
           <div className="stat-item">
             <span className="stat-label">Playlist:</span>
-            <span className="stat-value">{playlistTracks.length} tracks</span>
+            <span className="stat-value">
+              {playlistTracks.length} {playlistTracks.length === 1 ? 'track' : 'tracks'}
+            </span>
           </div>
         </div>
 
         <div className="app-layout">
           {/* Search Results Section */}
           <div className="search-section">
-            <h2 className="section-title">Search Results</h2>
+            <h2 className="section-title">
+              Search Results
+              {isSearching && <span className="searching-indicator"> (Searching...)</span>}
+            </h2>
             <Tracklist 
               tracks={searchResults}
               onAdd={addTrack}
@@ -100,5 +141,4 @@ export default function App(){
       </main>
     </div>
   );
-
 }

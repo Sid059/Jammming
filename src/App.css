@@ -3,7 +3,7 @@
     margin: 0 auto;
     padding: 20px;
     min-height: 100vh;
-    background-color: #2c2c2c;
+    background-color: #121212;
     color: #f2f2f2;
 }
 
@@ -163,4 +163,37 @@
 .playlist-name-input {
   padding-right: 60px; /* Space for counter */
   width: 100%;
+}
+
+/* Search Bar Container */
+.search-bar-container {
+  margin-bottom: 30px;
+  padding: 25px;
+  background-color: #000000;
+  border-radius: 10px;
+  border: 1px solid #282828;
+}
+
+/* Searching Indicator */
+.searching-indicator {
+  color: #1DB954;
+  font-size: 1rem;
+  margin-left: 10px;
+  font-family: 'SpotifyMixUI-Regular', sans-serif;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Update main container */
+.main-container {
+  padding: 0;
+}
+
+/* Stats display */
+.stats-display {
+  margin-bottom: 30px;
 }

@@ -1,0 +1,148 @@
+/* SearchBar Component Styles */
+
+.searchBar {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/* Search Input Wrapper */
+.searchInputWrapper {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+/* Search Input Field */
+.searchInput {
+  flex: 1;
+  padding: 16px 24px;
+  font-family: 'SpotifyMixUI-Regular', sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #181818;
+  border: 2px solid #404040;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #1DB954;
+  background-color: #000000;
+  box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.2);
+}
+
+.searchInput:hover:not(:disabled) {
+  border-color: #505050;
+}
+
+.searchInput:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.searchInput::placeholder {
+  color: #b3b3b3;
+  font-family: 'SpotifyMixUI-Regular', sans-serif;
+}
+
+/* Search Button */
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  min-width: 120px;
+  background-color: #1DB954;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-family: 'SpotifyMixUI-Bold', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.searchButton:hover:not(:disabled) {
+  background-color: #1ed760;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+}
+
+.searchButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.searchButton:disabled {
+  background-color: #404040;
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.7;
+}
+
+/* Search Icon (YOUR downloaded image) */
+.searchIcon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1); /* Makes white icon work on green button */
+}
+
+.buttonText {
+  display: inline-block;
+}
+
+/* Search Tips */
+/* .searchTips {
+  text-align: center;
+  color: #b3b3b3;
+  font-family: 'SpotifyMixUI-Regular', sans-serif;
+  font-size: 0.9rem;
+  padding: 8px;
+} */
+
+/* Loading Indicator */
+.loadingIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 10px;
+  color: #1DB954;
+  font-family: 'SpotifyMixUI-Regular', sans-serif;
+  font-size: 0.9rem;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(29, 185, 84, 0.3);
+  border-top-color: #1DB954;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .searchInputWrapper {
+    flex-direction: column;
+  }
+  
+  .searchButton {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .searchIcon {
+    width: 24px;
+    height: 24px;
+  }
+}
