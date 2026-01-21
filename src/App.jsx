@@ -9,16 +9,34 @@ export default function App(){
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
-  // We'll implement these functions in the next step
-  const addTrack = (track) => {
-    console.log('Adding track:', track.name);
-    // TODO: Add logic here
-  };
+  //========== add track to playlist ==========
+  function addTrack(trackToAdd) {
+    //check if track already exists in playlist using track id as its unique
+    const isTrackInPlaylist = playlistTracks.some( playlistTrack => playlistTrack.id === trackToAdd.id );
+    
+    if(isTrackInPlaylist) {
+      return; // Exit the function if the track is already in the playlist
+    }
+    else {
+      setPlaylistTracks( prevTracks => [...prevTracks, trackToAdd] );
+    }
+    
+  }
+  
+  // ========= remove track from playlist =========
+  function removeTrack(trackToRemove) {
+    //keep all tracks except the one with matching id
+    setPlaylistTracks( prevTracks => (
+      prevTracks.filter( playlistTrack => playlistTrack.id !== trackToRemove.id ) 
+    ));
+  }
 
-  const removeTrack = (track) => {
-    console.log('Removing track:', track.name);
-    // TODO: Add logic here
-  };
+  // ========= update playlist name =========
+  // This function will handle playlist name changes
+  function updatePlaylistName({ target }) {
+    setPlaylistName( target.value );
+  }
+
 
   return (
     <div className="App">
@@ -28,25 +46,55 @@ export default function App(){
       </header>
       
       <main className="main-container">
+        {/* Stats Display - Shows track counts */}
+        <div className="stats-display">
+          <div className="stat-item">
+            <span className="stat-label">Search Results:</span>
+            <span className="stat-value">{searchResults.length} tracks</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-label">Playlist:</span>
+            <span className="stat-value">{playlistTracks.length} tracks</span>
+          </div>
+        </div>
+
         <div className="app-layout">
+          {/* Search Results Section */}
           <div className="search-section">
-            <h2>Search Section</h2>
-            <Tracklist
+            <h2 className="section-title">Search Results</h2>
+            <Tracklist 
               tracks={searchResults}
               onAdd={addTrack}
               // These are search results, so show + buttons
               isRemoval={false}
-              />
+            />
           </div>
 
           <div className="playlist-section">
-            <h2>Playlist Section</h2>
-            <Tracklist
+            {/* Playlist Header with Editable Name */}
+            <div className="playlist-header">
+              <h2 className="section-title">Playlist:</h2>
+              <div className="name-input-wrapper">
+                <input
+                  type="text"
+                  value={playlistName}
+                  onChange={updatePlaylistName}
+                  className="playlist-name-input"
+                  placeholder="Enter playlist name"
+                  maxLength={50}
+                />
+                
+                <div className="char-counter">
+                  {playlistName.length}/50
+                </div>
+              </div>
+            </div>
+            
+            <Tracklist 
               tracks={playlistTracks}
               onRemove={removeTrack}
-              // These are playlist tracks, so show - buttons
               isRemoval={true}
-              />
+            />
           </div>
         </div>
       </main>
