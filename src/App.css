@@ -1,13 +1,24 @@
-.App{
-    font-family: 'SpotifyMixUI-Regular', Arial, sans-serif;
-    margin: 0 auto;
-    padding: 20px;
-    min-height: 100vh;
-    background-color: #121212;
-    color: #f2f2f2;
+/* ============ BASE STYLES ============ */
+.App {
+  font-family: 'SpotifyMixUI-Regular', Arial, sans-serif;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #121212;
+  color: #ffffff;
 }
 
-/* Header Content Layout */
+/* ============ HEADER RESPONSIVE ============ */
+.App-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 25px 20px;
+  background-color: #000000;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
 .header-content {
   display: flex;
   align-items: center;
@@ -17,8 +28,8 @@
 }
 
 .app-logo {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 
@@ -26,55 +37,62 @@
   text-align: center;
 }
 
-/* Header Styles */
-.App-header {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 30px 20px;
-    background-color: #000000;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-
 .app-title {
-    font-family: 'SpotifyMixUI-Bold', sans-serif;
-    font-size: 3.5rem;
-    color: #1DB954; /* Spotify green */
-    margin-bottom: 10px;
-    letter-spacing: -0.5px;
+  font-family: 'SpotifyMixUI-Bold', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font size */
+  color: #1DB954;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
 .app-subtitle {
-    font-family: 'SpotifyMixUI-Regular', sans-serif;
-    font-size: 1.2rem;
-    color: #b3b3b3; /* Spotify light gray */
+  font-family: 'SpotifyMixUI-Regular', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.2rem); /* Responsive font size */
+  color: #b3b3b3;
+  line-height: 1.4;
 }
 
-
-/* Main Container */
+/* ============ MAIN LAYOUT RESPONSIVE ============ */
 .main-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-  padding: 20px;
+  padding: 0;
 }
 
-
-/* Stats Display */
-.stats-display {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 30px;
+/* Search Bar Container */
+.search-bar-container {
+  margin-bottom: 25px;
   padding: 20px;
   background-color: #000000;
   border-radius: 10px;
   border: 1px solid #282828;
 }
 
+/* Stats Display - Responsive */
+.stats-display {
+  display: flex;
+  flex-direction: column; /* Stack on mobile */
+  gap: 15px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background-color: #000000;
+  border-radius: 10px;
+  border: 1px solid #282828;
+}
+
+/* On tablets and larger, switch to row layout */
+@media (min-width: 768px) {
+  .stats-display {
+    flex-direction: row;
+    gap: 30px;
+  }
+}
+
 .stat-item {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+  flex: 1;
+  text-align: center;
 }
 
 .stat-label {
@@ -89,90 +107,181 @@
   color: #1DB954;
 }
 
-
-
-/* App Layout */
+/* ============ APP LAYOUT - RESPONSIVE GRID ============ */
 .app-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: 25px;
 }
 
-.search-section,
-.playlist-section {
+/* Two columns on tablets and larger */
+@media (min-width: 768px) {
+  .app-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+/* Larger gap on desktop */
+@media (min-width: 1024px) {
+  .app-layout {
+    gap: 40px;
+  }
+}
+
+/* Search Section */
+.search-section {
+  display: flex;
+  flex-direction: column;
   background-color: #000000;
-  padding: 30px;
+  padding: 25px;
   border-radius: 10px;
   border: 1px solid #282828;
-  min-height: 400px;
+  min-height: 500px;
 }
 
-/* Section Titles */
-.section-title {
+.search-section .section-title {
   font-family: 'SpotifyMixUI-Bold', sans-serif;
-  font-size: 1.8rem;
+  font-size: clamp(1.5rem, 3vw, 1.8rem); /* Responsive title */
   color: #ffffff;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
   border-bottom: 2px solid #282828;
 }
 
-/* Name Input Wrapper */
-.name-input-wrapper {
-  flex: 1;
-  position: relative;
-}
-
-/* Character Counter */
-.char-counter {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'SpotifyMixUI-Regular', sans-serif;
-  font-size: 0.8rem;
-  color: #b3b3b3;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 2px 6px;
-  border-radius: 3px;
-  pointer-events: none; /* Don't interfere with input clicks */
-}
-
-/* Adjust input padding to make room for counter */
-.playlist-name-input {
-  padding-right: 60px; /* Space for counter */
-  width: 100%;
-}
-
-/* Search Bar Container */
-.search-bar-container {
-  margin-bottom: 30px;
-  padding: 25px;
-  background-color: #000000;
-  border-radius: 10px;
-  border: 1px solid #282828;
-}
-
-/* Searching Indicator */
 .searching-indicator {
   color: #1DB954;
-  font-size: 1rem;
-  margin-left: 10px;
+  font-size: 0.9rem;
+  margin-left: 8px;
   font-family: 'SpotifyMixUI-Regular', sans-serif;
   animation: pulse 1.5s infinite;
 }
 
+/* ============ COMPONENT-SPECIFIC RESPONSIVE FIXES ============ */
+
+/* SearchBar Responsive Adjustments */
+@media (max-width: 480px) {
+  .searchInputWrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .searchButton {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+  
+  .searchInput {
+    padding: 14px 20px;
+  }
+}
+
+/* Tracklist Responsive */
+@media (max-width: 480px) {
+  .track {
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .trackAction {
+    align-self: flex-end;
+    margin-left: 0;
+  }
+  
+  .trackName {
+    font-size: 0.95rem;
+  }
+  
+  .trackDetails {
+    font-size: 0.8rem;
+  }
+}
+
+/* Playlist Name Input Responsive */
+@media (max-width: 768px) {
+  .playlistHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .playlistNameInput {
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Save Button Responsive */
+@media (max-width: 480px) {
+  .saveButton {
+    padding: 14px;
+    font-size: 1rem;
+  }
+  
+  .playlistStats {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+/* ============ UTILITY CLASSES ============ */
+.hide-on-mobile {
+  display: none;
+}
+
+.show-on-mobile {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: block;
+  }
+  
+  .show-on-mobile {
+    display: none;
+  }
+}
+
+/* ============ ANIMATIONS ============ */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
 }
 
-/* Update main container */
-.main-container {
-  padding: 0;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Stats display */
-.stats-display {
-  margin-bottom: 30px;
+/* ============ SCROLLBAR STYLING ============ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #181818;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #505050;
 }

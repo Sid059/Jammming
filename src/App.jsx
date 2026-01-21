@@ -66,10 +66,6 @@ export default function App(){
 
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <h1 className="app-title">Jammming</h1>
-        <p className="app-subtitle">Create Spotify Playlists</p>
-      </header> */}
       <header className="App-header">
       {/* Add your icon next to the title */}
         <div className="header-content">
@@ -103,6 +99,7 @@ export default function App(){
               {searchResults.length} {searchResults.length === 1 ? 'track' : 'tracks'}
             </span>
           </div>
+
           <div className="stat-item">
             <span className="stat-label">Playlist:</span>
             <span className="stat-value">
