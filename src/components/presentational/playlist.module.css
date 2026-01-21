@@ -1,0 +1,203 @@
+/* Playlist Component Styles */
+
+.playlist {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #000000;
+  border-radius: 10px;
+  border: 1px solid #282828;
+  padding: 30px;
+}
+
+/* Playlist Header */
+.playlistHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #282828;
+}
+
+.sectionTitle {
+  font-family: 'SpotifyMixUI-Bold', sans-serif;
+  font-size: 1.8rem;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* Name Input */
+.nameInputWrapper {
+  flex: 1;
+  position: relative;
+}
+
+.playlistNameInput {
+  width: 100%;
+  font-family: 'SpotifyMixUI-Bold', sans-serif;
+  font-size: 1.8rem;
+  color: #1DB954;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid #404040;
+  border-radius: 4px;
+  padding: 8px 12px;
+  padding-right: 60px;
+  transition: all 0.2s ease;
+}
+
+.playlistNameInput:focus {
+  outline: none;
+  border-color: #1DB954;
+  background-color: rgba(29, 185, 84, 0.1);
+}
+
+.playlistNameInput:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: #505050;
+}
+
+.playlistNameInput:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.playlistNameInput::placeholder {
+  color: #404040;
+  font-family: 'SpotifyMixUI-Regular', sans-serif;
+}
+
+/* Character Counter */
+.charCounter {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'SpotifyMixUI-Regular', sans-serif;
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 2px 6px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* Tracklist Container */
+.tracklistContainer {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 5px;
+}
+
+/* Playlist Footer */
+.playlistFooter {
+  border-top: 2px solid #282828;
+  padding-top: 20px;
+}
+
+/* Playlist Stats */
+.playlistStats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-family: 'SpotifyMixUI-Regular', sans-serif;
+  font-size: 0.9rem;
+  color: #b3b3b3;
+}
+
+.trackCount {
+  background-color: #181818;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #282828;
+}
+
+.playlistDuration {
+  background-color: #181818;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #282828;
+}
+
+/* Save Button */
+.saveButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  background-color: #1DB954;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-family: 'SpotifyMixUI-Bold', sans-serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: #1ed760;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+}
+
+.saveButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.saveButton:disabled {
+  background-color: #404040;
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.7;
+}
+
+.saveIcon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1); /* Makes white icon work on green button */
+}
+
+/* Spinner for Saving */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Save Status */
+.saveStatus {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: rgba(29, 185, 84, 0.1);
+  border: 1px solid #1DB954;
+  border-radius: 6px;
+  text-align: center;
+  font-family: 'SpotifyMixUI-Regular', sans-serif;
+  font-size: 0.9rem;
+  color: #1DB954;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

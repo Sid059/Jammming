@@ -7,6 +7,25 @@
     color: #f2f2f2;
 }
 
+/* Header Content Layout */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.app-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.header-text {
+  text-align: center;
+}
+
 /* Header Styles */
 .App-header {
     text-align: center;
@@ -96,46 +115,6 @@
   margin-bottom: 25px;
   padding-bottom: 15px;
   border-bottom: 2px solid #282828;
-}
-
-/* Playlist Header Styles */
-.playlist-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #282828;
-}
-
-.playlist-name-input {
-  flex: 1;
-  font-family: 'SpotifyMixUI-Bold', sans-serif;
-  font-size: 1.8rem;
-  color: #1DB954;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 2px solid #404040;
-  border-radius: 4px;
-  padding: 8px 12px;
-  padding-right: 60px;
-  transition: all 0.2s ease;
-  width: 100%;
-}
-
-.playlist-name-input:focus {
-  outline: none;
-  border-color: #1DB954;
-  background-color: rgba(29, 185, 84, 0.1);
-}
-
-.playlist-name-input:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: #505050;
-}
-
-.playlist-name-input::placeholder {
-  color: #404040;
-  font-family: 'SpotifyMixUI-Regular', sans-serif;
 }
 
 /* Name Input Wrapper */

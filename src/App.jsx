@@ -3,13 +3,14 @@ import './App.css'
 import { mockTracks } from './mockData.js';
 import SearchBar from './components/container/SearchBar.jsx';
 import Tracklist from './components/container/Tracklist.jsx';
+import Playlist from './components/container/Playlist.jsx'; //=======NEW========
 
 export default function App(){
 
   const [searchResults, setSearchResults] = useState(mockTracks);
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
-   const [isSearching, setIsSearching] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
 
   //========== add track to playlist ==========
   function addTrack(trackToAdd) {
@@ -42,7 +43,7 @@ export default function App(){
 
    // ============ search function ============
   function handleSearch(searchTerm) {
-    console.log('Searching for:', searchTerm);
+    //console.log('Searching for:', searchTerm);
     
     // Show loading state
     setIsSearching(true);
@@ -59,15 +60,29 @@ export default function App(){
       setSearchResults(filteredTracks);
       setIsSearching(false);
       
-      console.log(`Found ${filteredTracks.length} tracks`);
+      //console.log(`Found ${filteredTracks.length} tracks`);
     }, 800); // Longer delay to see loading animation
   }
 
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <h1 className="app-title">Jammming</h1>
         <p className="app-subtitle">Create Spotify Playlists</p>
+      </header> */}
+      <header className="App-header">
+      {/* Add your icon next to the title */}
+        <div className="header-content">
+          <img 
+            src="/images/music-playlist.png" // or spotify.png
+            alt="Jammming Logo" 
+            className="app-logo"
+          />
+          <div className="header-text">
+            <h1 className="app-title">Jammming</h1>
+            <p className="app-subtitle">Create Spotify Playlists</p>
+          </div>
+        </div>
       </header>
       
       <main className="main-container">
@@ -111,30 +126,13 @@ export default function App(){
             />
           </div>
 
+          {/* Playlist Section */}
           <div className="playlist-section">
-            {/* Playlist Header with Editable Name */}
-            <div className="playlist-header">
-              <h2 className="section-title">Playlist:</h2>
-              <div className="name-input-wrapper">
-                <input
-                  type="text"
-                  value={playlistName}
-                  onChange={updatePlaylistName}
-                  className="playlist-name-input"
-                  placeholder="Enter playlist name"
-                  maxLength={50}
-                />
-                
-                <div className="char-counter">
-                  {playlistName.length}/50
-                </div>
-              </div>
-            </div>
-            
-            <Tracklist 
-              tracks={playlistTracks}
+            <Playlist 
+              playlistName={playlistName}
+              playlistTracks={playlistTracks}
+              onNameChange={updatePlaylistName}
               onRemove={removeTrack}
-              isRemoval={true}
             />
           </div>
         </div>
